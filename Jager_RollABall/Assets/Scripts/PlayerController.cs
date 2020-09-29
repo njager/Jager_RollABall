@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private int count;
     private float movementX;
     private float movementY;
+    private int jumpPower;
 
     // Start is called before the first frame update
     void Start()
@@ -41,22 +42,32 @@ public class PlayerController : MonoBehaviour
             winTextObject.SetActive(true);
         }
     }
+    void Jump(int jumpPower)
+    {
+
+    }
 
     void FixedUpdate()
     {
-        Vector3 movement = new Vector3(movementX, 0.0f, movementY);
+        Vector3 movement = new Vector3(movementX, 1, movementY);
 
         rb.AddForce(movement * speed);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("PickUp"))
+        if (other.gameObject.CompareTag("PickUp"))
         {
             other.gameObject.SetActive(false);
             count = count + 1;
 
             SetCountText();
         }
+        /*else if (other.gameObject.CompareTag("PUJump"))
+            other.gameObject.SetActive(false);
+            JumpPower = 5
+            
+        */   
     }
+    
 }

@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 0;
     public TextMeshProUGUI countText;
     public GameObject winTextObject;
-    public InputAction jumpAction;
+    public InputActionMap player;
 
     private Rigidbody rb;
     private int count;
@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
         SetCountText();
         winTextObject.SetActive(false);
+        player.Enable();
     }
 
     void OnMove(InputValue movementValue)
@@ -48,6 +49,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetButtonDown ("Jump"))
         {
+            print("Hello!");
             rb.velocity = Vector2.up * jumpPower;
         }
     }

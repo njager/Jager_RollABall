@@ -9,12 +9,14 @@ public class PlayerController : MonoBehaviour
     public float speed = 0;
     public TextMeshProUGUI countText;
     public GameObject winTextObject;
+    public InputAction jumpAction;
 
     private Rigidbody rb;
     private int count;
     private float movementX;
     private float movementY;
-    private int jumpPower;
+    [Range(1, 10)]
+    public float jumpPower;
 
     // Start is called before the first frame update
     void Start()
@@ -44,12 +46,15 @@ public class PlayerController : MonoBehaviour
     }
     void Jump(int jumpPower)
     {
-
+        if (Input.GetButtonDown ("Jump"))
+        {
+            rb.velocity = Vector2.up * jumpPower;
+        }
     }
 
     void FixedUpdate()
     {
-        Vector3 movement = new Vector3(movementX, 1, movementY);
+        Vector3 movement = new Vector3(movementX, 0.0f, movementY);
 
         rb.AddForce(movement * speed);
     }

@@ -1177,6 +1177,7 @@ MonoBehaviour:
   speed: 10
   countText: {fileID: 1621902093}
   winTextObject: {fileID: 795469774}
+  jumpPower: 5.28
 --- !u!1 &1109341741
 GameObject:
   m_ObjectHideFlags: 0

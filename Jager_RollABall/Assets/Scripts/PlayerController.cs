@@ -121,7 +121,7 @@ public class PlayerController : MonoBehaviour
         }
         else if (other.gameObject.CompareTag("PUJump"))
             other.gameObject.SetActive(false);
-        jumpPower = 2000;
+        jumpPower = 3000;
             
            
     }

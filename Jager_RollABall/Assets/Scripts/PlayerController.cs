@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     private int count;
     private float movementX;
     private float movementY;
+    int health = 3;
     
 
     // Start is called before the first frame update
@@ -92,6 +93,11 @@ public class PlayerController : MonoBehaviour
         {
             speed = 50f;
         }
+
+        if (health < 3)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 
     void FixedUpdate()
@@ -99,6 +105,14 @@ public class PlayerController : MonoBehaviour
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
 
         rb.AddForce(movement * speed);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            health--;
+        }
     }
 
     private void OnTriggerEnter(Collider other)

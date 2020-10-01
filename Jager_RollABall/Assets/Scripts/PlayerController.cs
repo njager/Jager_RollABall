@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 0;
     public TextMeshProUGUI countText;
     public GameObject winTextObject;
+    public GameObject jumpTextObject;
     public InputActionMap player;
     public float jumpPower = 0;
     public Vector3 gravity;
@@ -32,6 +33,7 @@ public class PlayerController : MonoBehaviour
 
         SetCountText();
         winTextObject.SetActive(false);
+        jumpTextObject.SetActive(false);
         player.Enable();
 
         Physics.gravity = gravity;
@@ -88,10 +90,10 @@ public class PlayerController : MonoBehaviour
             speed = 50f;
         }
 
-        /*if (health < 3)
+        if (health < 1)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }*/
+        }
     }
 
     void FixedUpdate()

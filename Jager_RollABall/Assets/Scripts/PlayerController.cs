@@ -14,13 +14,14 @@ public class PlayerController : MonoBehaviour
     public GameObject winTextObject;
     public InputActionMap player;
     public float jumpPower;
+    public Vector3 gravity;
 
     private Rigidbody rb;
     private int count;
     private float movementX;
     private float movementY;
     int health = 3;
-
+    
     bool onGround;
 
     // Start is called before the first frame update
@@ -32,6 +33,8 @@ public class PlayerController : MonoBehaviour
         SetCountText();
         winTextObject.SetActive(false);
         player.Enable();
+
+        Physics.gravity = gravity;
     }
 
     void OnMove(InputValue movementValue)

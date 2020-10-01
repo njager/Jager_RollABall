@@ -20,7 +20,8 @@ public class PlayerController : MonoBehaviour
     private float movementX;
     private float movementY;
     int health = 3;
-    
+
+    bool onGround;
 
     // Start is called before the first frame update
     void Start()
@@ -70,15 +71,15 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
-        //if (onGround)
-        //{ 
+        if (onGround)
+        { 
         rb.AddForce(Vector3.up * jumpPower);
-        //}
+        }
     }
 
     private void Update()
     {
-        //onGround = Physics.Raycast(transform.position, Vector3.down, .51f);
+        onGround = Physics.Raycast(transform.position, Vector3.down, .51f);
 
         if (transform.position.y < -10f)
         {

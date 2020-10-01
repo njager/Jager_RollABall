@@ -45,8 +45,13 @@ public class PlayerController : MonoBehaviour
             winTextObject.SetActive(true);
         }
     }
+    /// <summary>
+    /// Function to perform the jump action.
+    /// Recognizes input, adds upwards velocity
+    /// </summary>
     /*void Jump()
     {
+        if **is on floor**
         if (Input.GetButtonDown ("Jump"))
         {
             print("Hello!");

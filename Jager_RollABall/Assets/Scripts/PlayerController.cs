@@ -83,11 +83,11 @@ public class PlayerController : MonoBehaviour
 
         if (Keyboard.current.leftShiftKey.isPressed)
         {
-            speed = 100f;
+            speed = 130f;
         }
         else
         {
-            speed = 50f;
+            speed = 70f;
         }
 
         if (health < 1)
@@ -122,10 +122,11 @@ public class PlayerController : MonoBehaviour
             SetCountText();
         }
         else if (other.gameObject.CompareTag("PUJump"))
+        {
             other.gameObject.SetActive(false);
-        jumpPower = 3000;
-            
-           
+            jumpPower = 3000;
+            jumpTextObject.SetActive(true);
+        }  
     }
     
 }

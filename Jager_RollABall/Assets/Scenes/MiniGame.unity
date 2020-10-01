@@ -545,7 +545,7 @@ GameObject:
   - component: {fileID: 539554509}
   - component: {fileID: 539554508}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Obstacle
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -558,7 +558,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 539554507}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 62e8f3c478815b24ca5cef1a02e6b91a, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -621,7 +621,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 539554507}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.3467956, y: 0.77, z: 0.5382948}
+  m_LocalPosition: {x: 5.48, y: 0.77, z: 1.47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

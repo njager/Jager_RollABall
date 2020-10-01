@@ -88,10 +88,10 @@ public class PlayerController : MonoBehaviour
             speed = 50f;
         }
 
-        if (health < 3)
+        /*if (health < 3)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
+        }*/
     }
 
     void FixedUpdate()
@@ -106,6 +106,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Obstacle"))
         {
             health--;
+            print("Health =" + health);
         }
     }
 

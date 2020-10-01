@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI countText;
     public GameObject winTextObject;
     public InputActionMap player;
-    public float jumpPower;
+    public float jumpPower = 0;
     public Vector3 gravity;
 
     private Rigidbody rb;
@@ -57,16 +57,6 @@ public class PlayerController : MonoBehaviour
     /// Function to perform the jump action.
     /// Recognizes input, adds upwards velocity
     /// </summary>
-    /*void Jump()
-    {
-        if **is on floor**
-        if (Input.GetButtonDown ("Jump"))
-        {
-            print("Hello!");
-            rb.velocity = Vector2.up * jumpPower;
-        }
-    }
-    */
     void OnJump()
     {
         Jump();
@@ -130,7 +120,7 @@ public class PlayerController : MonoBehaviour
         }
         /*else if (other.gameObject.CompareTag("PUJump"))
             other.gameObject.SetActive(false);
-            JumpPower = 5
+            JumpPower = 2000
             
         */   
     }

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using System.Runtime.CompilerServices;
+using JetBrains.Annotations;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,13 +13,13 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI countText;
     public GameObject winTextObject;
     public InputActionMap player;
+    public float jumpPower;
 
     private Rigidbody rb;
     private int count;
     private float movementX;
     private float movementY;
-    [Range(1, 10)]
-    public float jumpPower;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -59,12 +62,43 @@ public class PlayerController : MonoBehaviour
         }
     }
     */
+    void OnJump()
+    {
+        Jump();
+    }
+
+    void Jump()
+    {
+        //if (onGround)
+        //{ 
+        rb.AddForce(Vector3.up * jumpPower);
+        //}
+    }
+
+    private void Update()
+    {
+        //onGround = Physics.Raycast(transform.position, Vector3.down, .51f);
+
+        if (transform.position.y < -10f)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+
+        if (Keyboard.current.leftShiftKey.isPressed)
+        {
+            speed = 100f;
+        }
+        else
+        {
+            speed = 50f;
+        }
+    }
+
     void FixedUpdate()
     {
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
 
         rb.AddForce(movement * speed);
-        //Jump();
     }
 
     private void OnTriggerEnter(Collider other)

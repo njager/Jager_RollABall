@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
             winTextObject.SetActive(true);
         }
     }
-    void Jump(int jumpPower)
+    /*void Jump()
     {
         if (Input.GetButtonDown ("Jump"))
         {
@@ -53,12 +53,13 @@ public class PlayerController : MonoBehaviour
             rb.velocity = Vector2.up * jumpPower;
         }
     }
-
+    */
     void FixedUpdate()
     {
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
 
         rb.AddForce(movement * speed);
+        //Jump();
     }
 
     private void OnTriggerEnter(Collider other)

@@ -118,11 +118,11 @@ public class PlayerController : MonoBehaviour
 
             SetCountText();
         }
-        /*else if (other.gameObject.CompareTag("PUJump"))
+        else if (other.gameObject.CompareTag("PUJump"))
             other.gameObject.SetActive(false);
-            JumpPower = 2000
+        jumpPower = 2000;
             
-        */   
+           
     }
     
 }

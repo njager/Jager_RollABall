@@ -1278,7 +1278,7 @@ MonoBehaviour:
     m_Asset: {fileID: 0}
     m_Actions: []
     m_Bindings: []
-  jumpPower: 2000
+  jumpPower: 0
   gravity: {x: 0, y: -80, z: 0}
 --- !u!1 &1109341741
 GameObject:

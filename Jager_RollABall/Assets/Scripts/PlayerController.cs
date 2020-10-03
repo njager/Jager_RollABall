@@ -56,7 +56,7 @@ public class PlayerController : MonoBehaviour
     void SetCountText()
     {
         countText.text = "Count: " + count.ToString();
-        if(count >= 27)
+        if(count >= 19)
         {
             winTextObject.SetActive(true);
         }
@@ -105,11 +105,11 @@ public class PlayerController : MonoBehaviour
         //Allows the player to spring by nearly doubling speed if LShift is used
         if (Keyboard.current.leftShiftKey.isPressed)
         {
-            speed = 130f;
+            speed = 190f;
         }
         else
         {
-            speed = 70f;
+            speed = 90f;
         }
     }
 

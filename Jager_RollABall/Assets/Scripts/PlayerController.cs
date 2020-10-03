@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
 {
     public float speed = 0;
     public TextMeshProUGUI countText;
+    public TextMeshProUGUI healthText;
     public GameObject winTextObject;
     public GameObject jumpTextObject;
     public InputActionMap player;
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         count = 0;
+        health = 0;
 
         SetCountText();
         winTextObject.SetActive(false);
@@ -53,6 +55,14 @@ public class PlayerController : MonoBehaviour
         if(count >= 12)
         {
             winTextObject.SetActive(true);
+        }
+    }
+    void SetHealthText()
+    {
+        countText.text = "Health: " + health.ToString();
+        if (health < 1)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
     /// <summary>

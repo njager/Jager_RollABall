@@ -20,9 +20,10 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
     private int count;
+    private int health;
     private float movementX;
     private float movementY;
-    private int health;
+    
     
     bool onGround;
 
@@ -42,6 +43,7 @@ public class PlayerController : MonoBehaviour
         Physics.gravity = gravity;
     }
 
+    //Detects and collects movement data
     void OnMove(InputValue movementValue)
     {
         Vector2 movementVector = movementValue.Get<Vector2>();
@@ -50,6 +52,7 @@ public class PlayerController : MonoBehaviour
         movementY = movementVector.y;
     }
 
+    //Updates count text with current data, displays win text
     void SetCountText()
     {
         countText.text = "Count: " + count.ToString();
@@ -58,6 +61,8 @@ public class PlayerController : MonoBehaviour
             winTextObject.SetActive(true);
         }
     }
+
+    //Updates health text with current health
     void SetHealthText()
     {
         healthText.text = "Health: " + health.ToString();
@@ -66,15 +71,14 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
-    /// <summary>
-    /// Function to perform the jump action.
-    /// Recognizes input, adds upwards velocity
-    /// </summary>
+
+    //Detects jump input, calls Jump function
     void OnJump()
     {
         Jump();
     }
 
+    //Adds vertical force if the player is on a platform
     void Jump()
     {
         if (onGround)
@@ -83,15 +87,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Is called every frame
+    /// Stores a variety of uses that need constant update
+    /// </summary>
     private void Update()
     {
+        //Detects if the player is on the ground
         onGround = Physics.Raycast(transform.position, Vector3.down, .51f);
 
+        //If the player falls below the level, reloads the scene to reset the game
         if (transform.position.y < -10f)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
+        //Allows the player to spring by nearly doubling speed if LShift is used
         if (Keyboard.current.leftShiftKey.isPressed)
         {
             speed = 130f;
@@ -102,6 +113,10 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Is called last every frame
+    /// Receives movement data and transfers data into Vector3 force according to current speed value
+    /// </summary>
     void FixedUpdate()
     {
         Vector3 movement = new Vector3(movementX, 0.0f, movementY);
@@ -109,6 +124,11 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(movement * speed);
     }
 
+    /// <summary>
+    /// Detects collisions with physical static bodies
+    /// Removes one from health when obstacles are collided with
+    /// </summary>
+    /// <param name="collision"></param>
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Obstacle"))
@@ -119,6 +139,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Detects collisions with trigger colliders
+    /// If colliding with a regular pick up, adds one to Count 
+    /// If colliding with the Jump pick up, adds jump power to the player allowing jumping
+    ///     Activates the instruction text
+    /// </summary>
+    /// <param name="other"></param>
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("PickUp"))

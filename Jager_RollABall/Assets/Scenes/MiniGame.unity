@@ -1407,6 +1407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 50
   countText: {fileID: 1621902093}
+  healthText: {fileID: 1612760279}
   winTextObject: {fileID: 795469774}
   jumpTextObject: {fileID: 757423562}
   player:

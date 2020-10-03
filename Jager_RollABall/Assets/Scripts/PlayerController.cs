@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     private int count;
     private float movementX;
     private float movementY;
-    int health = 3;
+    private int health;
     
     bool onGround;
 
@@ -31,9 +31,10 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         count = 0;
-        health = 0;
+        health = 10;
 
         SetCountText();
+        SetHealthText();
         winTextObject.SetActive(false);
         jumpTextObject.SetActive(false);
         player.Enable();
@@ -59,7 +60,7 @@ public class PlayerController : MonoBehaviour
     }
     void SetHealthText()
     {
-        countText.text = "Health: " + health.ToString();
+        healthText.text = "Health: " + health.ToString();
         if (health < 1)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -99,11 +100,6 @@ public class PlayerController : MonoBehaviour
         {
             speed = 70f;
         }
-
-        if (health < 1)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
     }
 
     void FixedUpdate()
@@ -119,6 +115,7 @@ public class PlayerController : MonoBehaviour
         {
             health--;
             print("Health =" + health);
+            SetHealthText();
         }
     }
 

@@ -105,11 +105,11 @@ public class PlayerController : MonoBehaviour
         //Allows the player to spring by nearly doubling speed if LShift is used
         if (Keyboard.current.leftShiftKey.isPressed)
         {
-            speed = 190f;
+            speed = 200f;
         }
         else
         {
-            speed = 90f;
+            speed = 100f;
         }
     }
 

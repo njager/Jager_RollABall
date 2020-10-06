@@ -1,4 +1,5 @@
-A version of the Unity Roll-A-Ball Tutorial game.
+A version of the Unity Roll-A-Ball Tutorial game for Indiana University Instructor Ian Sundstrom's MSCH-G300 Game Production I course. 
+Created by Nicholas Jager.
 
 Modifications:
  -added a jump mechanic that only activates once a specific power up is collected.
